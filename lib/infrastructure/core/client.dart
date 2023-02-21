@@ -7,7 +7,7 @@ final clientProvider = ChangeNotifierProvider((ref) => ClientService());
 
 class ClientService extends ChangeNotifier {
 
-  final channel = ClientChannel('server ip',
+  final channel = ClientChannel('192.168.1.109',
       port: 50000,
       options:
           const ChannelOptions(credentials: ChannelCredentials.insecure()));

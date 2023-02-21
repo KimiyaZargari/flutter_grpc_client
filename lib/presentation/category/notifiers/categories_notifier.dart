@@ -26,9 +26,11 @@ class CategoriesNotifier extends StateNotifier<CategoriesState> {
   CategoriesNotifier({required this.repository}) : super(CategoriesLoading());
 
   fetchCategories() async {
-    print('fetching');
     FetchCategories fetchCategories = FetchCategories(repository);
     var categories = await fetchCategories(Empty());
     state = CategoriesLoaded(categories);
   }
+
+  deleteCategory(int id) async {}
+  editCategory(int id) async {}
 }

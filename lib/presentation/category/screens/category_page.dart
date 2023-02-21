@@ -17,7 +17,7 @@ class CategoriesPage extends ConsumerWidget {
     if (state is CategoriesLoading) notifier.fetchCategories();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Categories'),
+        title: const Text('Eshop Categories'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
@@ -33,7 +33,11 @@ class CategoriesPage extends ConsumerWidget {
                   .map((category) => Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24, vertical: 4),
-                        child: CategoryPreview(category),
+                        child: CategoryPreview(
+                          category,
+                          onDelete: () => notifier.deleteCategory(category.id),
+                          onEdit: () => notifier.editCategory(category.id),
+                        ),
                       ))
                   .toList(),
             )
