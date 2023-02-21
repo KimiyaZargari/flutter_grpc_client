@@ -10,7 +10,12 @@ class CategoriesRepository extends ICategoriesRepository {
 
   @override
   Future<Categories> fetchCategories(Empty empty) async {
- //   final stub = EshopServiceClient(client.channel);
+    //   final stub = EshopServiceClient(client.channel);
     return await client.stub.getAllCategories(empty);
+  }
+
+  @override
+  Future<Empty> deleteCategory(ID id) async{
+    return await client.stub.deleteCategory(id);
   }
 }

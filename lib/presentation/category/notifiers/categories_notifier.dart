@@ -32,5 +32,4 @@ class CategoriesNotifier extends StateNotifier<CategoriesState> {
   }
 
   deleteCategory(int id) async {}
-  editCategory(int id) async {}
 }

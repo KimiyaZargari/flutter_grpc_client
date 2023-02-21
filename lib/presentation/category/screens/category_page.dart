@@ -36,7 +36,7 @@ class CategoriesPage extends ConsumerWidget {
                         child: CategoryPreview(
                           category,
                           onDelete: () => notifier.deleteCategory(category.id),
-                          onEdit: () => notifier.editCategory(category.id),
+                          onEdit: () => () {},
                         ),
                       ))
                   .toList(),
