@@ -7,8 +7,8 @@ import 'package:flutter_grpc_client/presentation/category/widgets/category_previ
 import 'package:flutter_grpc_client/presentation/core/loading_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CategoryPage extends ConsumerWidget {
-  const CategoryPage({Key? key}) : super(key: key);
+class CategoriesPage extends ConsumerWidget {
+  const CategoriesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
@@ -18,11 +18,15 @@ class CategoryPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categories'),
+        centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const CreateCategoryPage()));
-      }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const CreateCategoryPage()));
+        },
+        child: const Icon(Icons.add),
+      ),
       body: state is CategoriesLoaded
           ? ListView(
               children: state.categories.categories

@@ -1,4 +1,7 @@
+import 'package:flutter_grpc_client/application/category/fetch_categories.dart';
+import 'package:flutter_grpc_client/domain/category/i_categories_repository.dart';
 import 'package:flutter_grpc_client/domain/core/generated/eshop.pb.dart';
+import 'package:flutter_grpc_client/infrastructure/category/categories_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class CategoriesState {}
@@ -18,8 +21,14 @@ class CategoriesError extends CategoriesState {
 }
 
 class CategoriesNotifier extends StateNotifier<CategoriesState> {
-  CategoriesNotifier() : super(CategoriesLoading());
+  final ICategoriesRepository repository;
 
-  fetchCategories() async {}
+  CategoriesNotifier({required this.repository}) : super(CategoriesLoading());
 
+  fetchCategories() async {
+    print('fetching');
+    FetchCategories fetchCategories = FetchCategories(repository);
+    var categories = await fetchCategories(Empty());
+    state = CategoriesLoaded(categories);
+  }
 }

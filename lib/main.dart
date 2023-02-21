@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const ProviderScope(
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: CategoryPage(),
+        home: CategoriesPage(),
       ),
     );
   }
