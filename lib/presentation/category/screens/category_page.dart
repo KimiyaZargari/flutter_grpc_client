@@ -4,6 +4,7 @@ import 'package:flutter_grpc_client/presentation/category/notifiers/categories_n
 import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_page.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/providers.dart';
 import 'package:flutter_grpc_client/presentation/category/widgets/category_preview.dart';
+import 'package:flutter_grpc_client/presentation/core/loading_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CategoryPage extends ConsumerWidget {
@@ -32,7 +33,7 @@ class CategoryPage extends ConsumerWidget {
                       ))
                   .toList(),
             )
-          : const CircularProgressIndicator(),
+          : const LoadingIndicator(),
     );
   }
 }
