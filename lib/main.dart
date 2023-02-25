@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grpc_client/presentation/category/screens/category_page.dart';
+import 'package:flutter_grpc_client/presentation/category/screens/categories_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {

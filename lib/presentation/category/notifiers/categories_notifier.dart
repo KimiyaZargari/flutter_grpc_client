@@ -3,6 +3,7 @@ import 'package:flutter_grpc_client/domain/category/i_categories_repository.dart
 import 'package:flutter_grpc_client/domain/core/generated/eshop.pb.dart';
 import 'package:flutter_grpc_client/infrastructure/category/categories_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class CategoriesState {}
 
@@ -30,6 +31,7 @@ class CategoriesNotifier extends StateNotifier<CategoriesState> {
     var categories = await fetchCategories(Empty());
     state = CategoriesLoaded(categories);
   }
+
 
   deleteCategory(int id) async {}
 }

@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/categories_notifier.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_notifier.dart';
-import 'package:flutter_grpc_client/presentation/core/loading_indicator.dart';
+import 'package:flutter_grpc_client/presentation/category/widgets/image_widget.dart';
+import 'package:flutter_grpc_client/presentation/core/widgets/loading_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../notifiers/providers.dart';
@@ -33,18 +34,29 @@ class CreateCategoryPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextFormField(
-                onSaved: (val) {
-                  notifier.categoryName = val!;
-                },
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'Please enter category name!';
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                    label: Text('name'), border: OutlineInputBorder()),
+              Column(
+                children: [
+                  TextFormField(
+                    onSaved: (val) {
+                      notifier.categoryName = val!;
+                    },
+                    validator: (val) {
+                      if (val == null || val.isEmpty) {
+                        return 'Please enter category name!';
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        label: Text('name'), border: OutlineInputBorder()),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  ImageWidget(
+                    image: notifier.image,
+                    setImage: () => notifier.setImage(),
+                  ),
+                ],
               ),
               ElevatedButton(
                   onPressed: () {

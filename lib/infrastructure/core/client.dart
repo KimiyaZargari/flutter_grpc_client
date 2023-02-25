@@ -6,7 +6,6 @@ import 'package:grpc/grpc.dart';
 final clientProvider = ChangeNotifierProvider((ref) => ClientService());
 
 class ClientService extends ChangeNotifier {
-
   final channel = ClientChannel('192.168.1.109',
       port: 50000,
       options:
@@ -15,7 +14,7 @@ class ClientService extends ChangeNotifier {
 
   ClientService() {
     stub = EshopServiceClient(channel,
-        options: CallOptions(timeout: const Duration(seconds: 30)));
+        options: CallOptions(timeout: const Duration(seconds: 1200)));
   }
 
   @override
