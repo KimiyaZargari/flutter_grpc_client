@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/categories_notifier.dart';
-import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_page.dart';
+import 'package:flutter_grpc_client/presentation/category/screens/create_category_page.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/providers.dart';
 import 'package:flutter_grpc_client/presentation/category/widgets/category_preview.dart';
 import 'package:flutter_grpc_client/presentation/core/loading_indicator.dart';

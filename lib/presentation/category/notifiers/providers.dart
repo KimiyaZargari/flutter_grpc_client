@@ -1,6 +1,7 @@
 import 'package:flutter_grpc_client/infrastructure/category/categories_repository.dart';
 import 'package:flutter_grpc_client/infrastructure/core/client.dart';
 import 'package:flutter_grpc_client/presentation/category/notifiers/categories_notifier.dart';
+import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final categoriesRepositoryProvider =
@@ -9,4 +10,8 @@ final categoriesRepositoryProvider =
 final categoriesProvider =
     StateNotifierProvider<CategoriesNotifier, CategoriesState>((ref) =>
         CategoriesNotifier(
+            repository: ref.watch(categoriesRepositoryProvider)));
+final createCategoryProvider =
+    StateNotifierProvider<CreateCategoryNotifier, CreateCategoryState>((ref) =>
+        CreateCategoryNotifier(
             repository: ref.watch(categoriesRepositoryProvider)));

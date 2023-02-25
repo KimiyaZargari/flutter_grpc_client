@@ -41,13 +41,16 @@ final $typed_data.Uint8List productDescriptor = $convert.base64Decode('CgdQcm9kd
 const Category$json = const {
   '1': 'Category',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '9': 0, '10': 'id', '17': true},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+  ],
+  '8': const [
+    const {'1': '_id'},
   ],
 };
 
 /// Descriptor for `Category`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List categoryDescriptor = $convert.base64Decode('CghDYXRlZ29yeRIOCgJpZBgBIAEoBVICaWQSEgoEbmFtZRgCIAEoCVIEbmFtZQ==');
+final $typed_data.Uint8List categoryDescriptor = $convert.base64Decode('CghDYXRlZ29yeRITCgJpZBgBIAEoBUgAUgJpZIgBARISCgRuYW1lGAIgASgJUgRuYW1lQgUKA19pZA==');
 @$core.Deprecated('Use productsDescriptor instead')
 const Products$json = const {
   '1': 'Products',
