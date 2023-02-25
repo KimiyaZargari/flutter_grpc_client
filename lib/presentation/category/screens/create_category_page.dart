@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_grpc_client/presentation/category/notifiers/categories_notifier.dart';
+import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_notifier.dart';
+import 'package:flutter_grpc_client/presentation/core/loading_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../notifiers/providers.dart';
@@ -11,6 +14,12 @@ class CreateCategoryPage extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final state = ref.watch(createCategoryProvider);
     final notifier = ref.watch(createCategoryProvider.notifier);
+    ref.listen(createCategoryProvider, (previous, next) {
+      if (next is CategoryCreated) {
+        ref.invalidate(categoriesProvider);
+        Navigator.of(context).pop();
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create Category'),
@@ -44,7 +53,9 @@ class CreateCategoryPage extends ConsumerWidget {
                       notifier.createCategory();
                     }
                   },
-                  child: const Text('done'))
+                  child: state is CreatingCategory
+                      ? const LoadingIndicator()
+                      : const Text('create'))
             ],
           ),
         ),

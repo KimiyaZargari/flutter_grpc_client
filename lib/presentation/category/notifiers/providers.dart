@@ -8,10 +8,10 @@ final categoriesRepositoryProvider =
     Provider((ref) => CategoriesRepository(ref.watch(clientProvider)));
 
 final categoriesProvider =
-    StateNotifierProvider<CategoriesNotifier, CategoriesState>((ref) =>
-        CategoriesNotifier(
+    StateNotifierProvider.autoDispose<CategoriesNotifier, CategoriesState>(
+        (ref) => CategoriesNotifier(
             repository: ref.watch(categoriesRepositoryProvider)));
-final createCategoryProvider =
-    StateNotifierProvider<CreateCategoryNotifier, CreateCategoryState>((ref) =>
-        CreateCategoryNotifier(
-            repository: ref.watch(categoriesRepositoryProvider)));
+final createCategoryProvider = StateNotifierProvider.autoDispose<
+        CreateCategoryNotifier, CreateCategoryState>(
+    (ref) => CreateCategoryNotifier(
+        repository: ref.watch(categoriesRepositoryProvider)));

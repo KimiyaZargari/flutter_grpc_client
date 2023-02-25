@@ -15,7 +15,12 @@ class CategoriesRepository extends ICategoriesRepository {
   }
 
   @override
-  Future<Empty> deleteCategory(ID id) async{
+  Future<Empty> deleteCategory(ID id) async {
     return await client.stub.deleteCategory(id);
+  }
+
+  @override
+  Future<Category> createCategory(Category category) async {
+    return await client.stub.createCategory(category);
   }
 }
