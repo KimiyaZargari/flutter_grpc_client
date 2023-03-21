@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_grpc_client/application/category/create_category.dart';
-import 'package:flutter_grpc_client/application/core/upload_images.dart';
+import 'package:flutter_grpc_client/application/core/upload_image.dart';
 import 'package:flutter_grpc_client/domain/category/i_categories_repository.dart';
 import 'package:flutter_grpc_client/domain/core/generated/eshop.pb.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,8 +36,8 @@ class CreateCategoryNotifier extends StateNotifier<CreateCategoryState> {
   createCategory() async {
     state = CreatingCategory();
     if (image != null) {
-      UploadImages uploadImages = UploadImages(coreRepository);
-      await uploadImages(image!);
+      UploadImage uploadImage = UploadImage(coreRepository);
+      await uploadImage(image!);
     }
     CreateCategory createCategory = CreateCategory(categoryRepository);
     await createCategory(Category(name: categoryName));

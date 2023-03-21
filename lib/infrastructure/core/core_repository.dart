@@ -14,8 +14,8 @@ class CoreRepository extends ICoreRepository {
   CoreRepository(this.client);
 
   @override
-  Future<ImageLinks> uploadImages(XFile image) async {
-    return await client.stub.uploadImages(() async* {
+  Future<ImageLink> uploadImage(XFile image) async {
+    return await client.stub.uploadImage(() async* {
       bool nameSent = false;
       final imageBytes = await image.readAsBytes();
 
@@ -23,14 +23,27 @@ class CoreRepository extends ICoreRepository {
       while (index < imageBytes.length) {
         int lastIndex = index + 128;
         if (lastIndex > imageBytes.length) lastIndex = imageBytes.length;
-        final data = ImageToUpload(
+        final data = AppImage(
           image: imageBytes.sublist(index, lastIndex),
         );
         nameSent = true;
         yield data;
         index = lastIndex;
       }
-      yield ImageToUpload(image: [], name: image.name);
+      yield AppImage(image: [], name: !nameSent ? image.name : null);
     }.call());
+  }
+
+  @override
+  Future<AppImage> loadImage(ImageLink link) async {
+    final List<int> image = [];
+    String? name;
+    await for (var element in client.stub.loadImage(link)) {
+      if (element.name.isNotEmpty) {
+        name = element.name;
+      }
+      image.addAll(element.image);
+    }
+    return AppImage(image: image, name: name);
   }
 }
