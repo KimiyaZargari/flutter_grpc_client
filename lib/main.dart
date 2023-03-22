@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grpc_client/presentation/category/screens/categories_page.dart';
+import 'package:flutter_grpc_client/presentation/product/screens/products_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const ProviderScope(
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: CategoriesPage(),
+        home: ProductsPage(),
       ),
     );
   }

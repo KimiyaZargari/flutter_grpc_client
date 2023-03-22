@@ -1,29 +1,27 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grpc_client/presentation/category/notifiers/categories_notifier.dart';
-import 'package:flutter_grpc_client/presentation/category/notifiers/create_category_notifier.dart';
-import 'package:flutter_grpc_client/presentation/category/widgets/image_widget.dart';
 import 'package:flutter_grpc_client/presentation/core/widgets/loading_indicator.dart';
+import 'package:flutter_grpc_client/presentation/product/notifiers/create_product_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../notifiers/providers.dart';
+import '../notifiers/products_notifier.dart';
+import '../widgets/image_widget.dart';
 
-class CreateCategoryPage extends ConsumerWidget {
-  const CreateCategoryPage({Key? key}) : super(key: key);
+class CreateProductPage extends ConsumerWidget {
+  const CreateProductPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-    final state = ref.watch(createCategoryProvider);
-    final notifier = ref.watch(createCategoryProvider.notifier);
-    ref.listen(createCategoryProvider, (previous, next) {
-      if (next is CategoryCreated) {
-        ref.invalidate(categoriesProvider);
+    final state = ref.watch(createProductProvider);
+    final notifier = ref.watch(createProductProvider.notifier);
+    ref.listen(createProductProvider, (previous, next) {
+      if (next is ProductCreated) {
+        ref.invalidate(productsProvider);
         Navigator.of(context).pop();
       }
     });
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Category'),
+        title: const Text('Create Product'),
         centerTitle: true,
       ),
       body: Padding(
@@ -38,18 +36,18 @@ class CreateCategoryPage extends ConsumerWidget {
                 children: [
                   TextFormField(
                     onSaved: (val) {
-                      notifier.categoryName = val!;
+                      notifier.productName = val!;
                     },
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter category name!';
+                        return 'Please enter product name!';
                       }
                       return null;
                     },
                     decoration: const InputDecoration(
                         label: Text('name'), border: OutlineInputBorder()),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   ImageWidget(
@@ -62,10 +60,10 @@ class CreateCategoryPage extends ConsumerWidget {
                   onPressed: () {
                     if (notifier.formKey.currentState!.validate()) {
                       notifier.formKey.currentState!.save();
-                      notifier.createCategory();
+                      notifier.createProduct();
                     }
                   },
-                  child: state is CreatingCategory
+                  child: state is CreatingProduct
                       ? const LoadingIndicator()
                       : const Text('create'))
             ],

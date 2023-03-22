@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grpc_client/domain/core/generated/eshop.pb.dart';
 import 'package:flutter_grpc_client/presentation/image/widgets/app_image.dart';
 
-class CategoryPreview extends StatelessWidget {
-  final Category category;
+class ProductPreview extends StatelessWidget {
+  final Product product;
   final Function() onDelete, onEdit;
 
-  const CategoryPreview(this.category,
+  const ProductPreview(this.product,
       {Key? key, required this.onDelete, required this.onEdit})
       : super(key: key);
 
@@ -22,17 +22,17 @@ class CategoryPreview extends StatelessWidget {
           children: [
             Row(
               children: [
-                if (category.imageLink.isNotEmpty)
+                if (product.mainProductImage.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(right: 14.0),
                     child: AppNetworkImage(
-                      ImageLink(imageLink: category.imageLink),
+                      ImageLink(imageLink: product.mainProductImage),
                       height: 60,
                       width: 60,
                     ),
                   ),
                 Text(
-                  category.name,
+                  product.name,
                 ),
               ],
             ),

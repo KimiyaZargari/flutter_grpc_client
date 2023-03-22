@@ -197,7 +197,8 @@ class Product extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Product', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'categoryId', $pb.PbFieldType.O3)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mainProductImage')
+    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'images')
     ..hasRequiredFields = false
   ;
 
@@ -205,7 +206,8 @@ class Product extends $pb.GeneratedMessage {
   factory Product({
     $core.int? id,
     $core.String? name,
-    $core.int? categoryId,
+    $core.String? mainProductImage,
+    $core.Iterable<$core.String>? images,
   }) {
     final _result = create();
     if (id != null) {
@@ -214,8 +216,11 @@ class Product extends $pb.GeneratedMessage {
     if (name != null) {
       _result.name = name;
     }
-    if (categoryId != null) {
-      _result.categoryId = categoryId;
+    if (mainProductImage != null) {
+      _result.mainProductImage = mainProductImage;
+    }
+    if (images != null) {
+      _result.images.addAll(images);
     }
     return _result;
   }
@@ -259,88 +264,16 @@ class Product extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get categoryId => $_getIZ(2);
+  $core.String get mainProductImage => $_getSZ(2);
   @$pb.TagNumber(3)
-  set categoryId($core.int v) { $_setSignedInt32(2, v); }
+  set mainProductImage($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasCategoryId() => $_has(2);
+  $core.bool hasMainProductImage() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCategoryId() => clearField(3);
-}
+  void clearMainProductImage() => clearField(3);
 
-class Category extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Category', createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLink')
-    ..hasRequiredFields = false
-  ;
-
-  Category._() : super();
-  factory Category({
-    $core.int? id,
-    $core.String? name,
-    $core.String? imageLink,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (name != null) {
-      _result.name = name;
-    }
-    if (imageLink != null) {
-      _result.imageLink = imageLink;
-    }
-    return _result;
-  }
-  factory Category.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Category.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Category clone() => Category()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Category copyWith(void Function(Category) updates) => super.copyWith((message) => updates(message as Category)) as Category; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Category create() => Category._();
-  Category createEmptyInstance() => create();
-  static $pb.PbList<Category> createRepeated() => $pb.PbList<Category>();
-  @$core.pragma('dart2js:noInline')
-  static Category getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Category>(create);
-  static Category? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get imageLink => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set imageLink($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasImageLink() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearImageLink() => clearField(3);
+  @$pb.TagNumber(4)
+  $core.List<$core.String> get images => $_getList(3);
 }
 
 class Products extends $pb.GeneratedMessage {
@@ -382,46 +315,5 @@ class Products extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<Product> get products => $_getList(0);
-}
-
-class Categories extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Categories', createEmptyInstance: create)
-    ..pc<Category>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'categories', $pb.PbFieldType.PM, subBuilder: Category.create)
-    ..hasRequiredFields = false
-  ;
-
-  Categories._() : super();
-  factory Categories({
-    $core.Iterable<Category>? categories,
-  }) {
-    final _result = create();
-    if (categories != null) {
-      _result.categories.addAll(categories);
-    }
-    return _result;
-  }
-  factory Categories.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Categories.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Categories clone() => Categories()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Categories copyWith(void Function(Categories) updates) => super.copyWith((message) => updates(message as Categories)) as Categories; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Categories create() => Categories._();
-  Categories createEmptyInstance() => create();
-  static $pb.PbList<Categories> createRepeated() => $pb.PbList<Categories>();
-  @$core.pragma('dart2js:noInline')
-  static Categories getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Categories>(create);
-  static Categories? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<Category> get categories => $_getList(0);
 }
 
