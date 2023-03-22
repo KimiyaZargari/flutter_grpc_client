@@ -25,12 +25,12 @@ class CoreRepository extends ICoreRepository {
         if (lastIndex > imageBytes.length) lastIndex = imageBytes.length;
         final data = AppImage(
           image: imageBytes.sublist(index, lastIndex),
+          name: !nameSent ? image.name : null,
         );
         nameSent = true;
         yield data;
         index = lastIndex;
       }
-      yield AppImage(image: [], name: !nameSent ? image.name : null);
     }.call());
   }
 

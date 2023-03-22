@@ -8,8 +8,10 @@ import '../notifers/image_notifier.dart';
 
 class AppNetworkImage extends ConsumerWidget {
   final ImageLink link;
+  final double? height, width;
 
-  const AppNetworkImage(this.link, {Key? key}) : super(key: key);
+  const AppNetworkImage(this.link, {this.height, this.width, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
@@ -19,9 +21,9 @@ class AppNetworkImage extends ConsumerWidget {
     return state is ImageLoaded
         ? Image.memory(
             Uint8List.fromList(state.image.image),
-            height: 300,
-            width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
+            height: width,
+            width: height,
           )
         : const LoadingIndicator();
   }

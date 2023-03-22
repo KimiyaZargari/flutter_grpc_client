@@ -35,12 +35,14 @@ class CreateCategoryNotifier extends StateNotifier<CreateCategoryState> {
 
   createCategory() async {
     state = CreatingCategory();
+    ImageLink? imageLink;
     if (image != null) {
       UploadImage uploadImage = UploadImage(coreRepository);
-      await uploadImage(image!);
+      imageLink = await uploadImage(image!);
     }
     CreateCategory createCategory = CreateCategory(categoryRepository);
-    await createCategory(Category(name: categoryName));
+    await createCategory(
+        Category(name: categoryName, imageLink: imageLink?.imageLink));
     state = CategoryCreated();
   }
 
