@@ -28,17 +28,18 @@ class ProductsPage extends ConsumerWidget {
         child: const Icon(Icons.add),
       ),
       body: state is ProductsLoaded
-          ? ListView(
+          ? GridView.count(
+        childAspectRatio: 0.7,
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              padding: EdgeInsets.zero,
               children: state.products.products
-                  .map((product) => Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 4),
-                        child: ProductPreview(
-                          product,
-                          onDelete: () => notifier.deleteProduct(product.id),
-                          onEdit: () => () {},
-                        ),
-                      ))
+                  .map((product) => ProductPreview(
+                    product,
+                    onDelete: () => notifier.deleteProduct(product.id),
+                    onEdit: () => () {},
+                  ))
                   .toList(),
             )
           : const LoadingIndicator(),

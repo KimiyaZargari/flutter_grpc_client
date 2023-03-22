@@ -17,20 +17,22 @@ class ProductPreview extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
+            Column(
               children: [
-                if (product.mainProductImage.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 14.0),
-                    child: AppNetworkImage(
-                      ImageLink(imageLink: product.mainProductImage),
-                      height: 60,
-                      width: 60,
-                    ),
-                  ),
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: product.mainProductImage.isNotEmpty
+                      ? AppNetworkImage(
+                          ImageLink(imageLink: product.mainProductImage))
+                      : Container(
+                          color: Colors.grey[200],
+                          child:
+                              const Icon(Icons.image_not_supported_outlined)),
+                ),
+                SizedBox(height: 10,),
                 Text(
                   product.name,
                 ),
@@ -75,14 +77,12 @@ class ProductPreview extends StatelessWidget {
                     },
                     icon: const Icon(
                       Icons.delete,
-                      color: Colors.orangeAccent,
+                      color: Colors.grey,
                     )),
-                IconButton(
-                    onPressed: onEdit,
-                    icon: const Icon(
-                      Icons.edit,
-                      color: Colors.teal,
-                    )),
+                Expanded(
+                  child: OutlinedButton(
+                      onPressed: onEdit, child: const Text('Edit')),
+                ),
               ],
             ),
           ],
