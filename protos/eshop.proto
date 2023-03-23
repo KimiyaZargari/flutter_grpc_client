@@ -36,8 +36,10 @@ message Product {
     string name = 2;
     string main_product_image = 3;
     repeated string images = 4;
+    double price = 5;
+    double discount = 6;
+    string description = 7;
 }
-
 message Products {
     repeated Product products = 1;
 }

@@ -199,6 +199,9 @@ class Product extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mainProductImage')
     ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'images')
+    ..a<$core.double>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OD)
+    ..a<$core.double>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discount', $pb.PbFieldType.OD)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..hasRequiredFields = false
   ;
 
@@ -208,6 +211,9 @@ class Product extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? mainProductImage,
     $core.Iterable<$core.String>? images,
+    $core.double? price,
+    $core.double? discount,
+    $core.String? description,
   }) {
     final _result = create();
     if (id != null) {
@@ -221,6 +227,15 @@ class Product extends $pb.GeneratedMessage {
     }
     if (images != null) {
       _result.images.addAll(images);
+    }
+    if (price != null) {
+      _result.price = price;
+    }
+    if (discount != null) {
+      _result.discount = discount;
+    }
+    if (description != null) {
+      _result.description = description;
     }
     return _result;
   }
@@ -274,6 +289,33 @@ class Product extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(4)
   $core.List<$core.String> get images => $_getList(3);
+
+  @$pb.TagNumber(5)
+  $core.double get price => $_getN(4);
+  @$pb.TagNumber(5)
+  set price($core.double v) { $_setDouble(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasPrice() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPrice() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.double get discount => $_getN(5);
+  @$pb.TagNumber(6)
+  set discount($core.double v) { $_setDouble(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasDiscount() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDiscount() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get description => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set description($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasDescription() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearDescription() => clearField(7);
 }
 
 class Products extends $pb.GeneratedMessage {

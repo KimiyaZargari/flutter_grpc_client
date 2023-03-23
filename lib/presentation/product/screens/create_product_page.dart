@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_grpc_client/presentation/core/widgets/loading_indicator.dart';
 import 'package:flutter_grpc_client/presentation/product/notifiers/create_product_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,34 +33,120 @@ class CreateProductPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Column(
-                children: [
-                  TextFormField(
-                    onSaved: (val) {
-                      notifier.productName = val!;
-                    },
-                    validator: (val) {
-                      if (val == null || val.isEmpty) {
-                        return 'Please enter product name!';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                        label: Text('name'), border: OutlineInputBorder()),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  ImageWidget(
-                    image: notifier.image,
-                    setImage: () => notifier.setImage(),
-                  ),
-                ],
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: ImageWidget(
+                              image: notifier.image,
+                              setImage: () => notifier.setImage(),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 12,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 2.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextFormField(
+                                    keyboardType: TextInputType.number,
+                                    onSaved: (val) {
+                                      if (val != null && val.isNotEmpty) {
+                                        notifier.product.price =
+                                            double.parse(val);
+                                      }
+                                    },
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return 'Please enter price!';
+                                      } else if (val == '0') {
+                                        return 'Price must be nonzero!';
+                                      }
+
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        label: Text('price*'),
+                                        border: OutlineInputBorder()),
+                                  ),
+                                  TextFormField(
+                                    initialValue: '0',
+                                    onSaved: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        val = '0';
+                                      }
+                                      notifier.product.discount =
+                                          double.parse(val);
+                                    },
+                                    validator: (_) {
+                                      if (notifier.product.discount >=
+                                              notifier.product.price &&
+                                          notifier.product.price != 0) {
+                                        return 'Invalid discount!';
+                                      }
+                                      return null;
+                                    },
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                        label: Text('discount'),
+                                        border: OutlineInputBorder()),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      child: TextFormField(
+                        onSaved: (val) {
+                          if (val != null && val.isNotEmpty) {
+                            notifier.product.name = val;
+                          }
+                        },
+                        validator: (val) {
+                          if (val == null || val.isEmpty) {
+                            return 'Please enter product name!';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                            label: Text('name*'), border: OutlineInputBorder()),
+                      ),
+                    ),
+                    TextFormField(
+                      maxLines: 5,
+                      onSaved: (val) {
+                        if (val != null) {
+                          notifier.product.description = val.trim();
+                        }
+                      },
+                      decoration: const InputDecoration(
+                          alignLabelWithHint: true,
+                          label: Text(
+                            'description',
+                          ),
+                          border: OutlineInputBorder()),
+                    ),
+                  ],
+                ),
               ),
               ElevatedButton(
                   onPressed: () {
+                    notifier.formKey.currentState!.save();
                     if (notifier.formKey.currentState!.validate()) {
-                      notifier.formKey.currentState!.save();
                       notifier.createProduct();
                     }
                   },

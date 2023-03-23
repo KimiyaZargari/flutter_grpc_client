@@ -54,11 +54,14 @@ const Product$json = const {
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'main_product_image', '3': 3, '4': 1, '5': 9, '10': 'mainProductImage'},
     const {'1': 'images', '3': 4, '4': 3, '5': 9, '10': 'images'},
+    const {'1': 'price', '3': 5, '4': 1, '5': 1, '10': 'price'},
+    const {'1': 'discount', '3': 6, '4': 1, '5': 1, '10': 'discount'},
+    const {'1': 'description', '3': 7, '4': 1, '5': 9, '10': 'description'},
   ],
 };
 
 /// Descriptor for `Product`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List productDescriptor = $convert.base64Decode('CgdQcm9kdWN0Eg4KAmlkGAEgASgFUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiwKEm1haW5fcHJvZHVjdF9pbWFnZRgDIAEoCVIQbWFpblByb2R1Y3RJbWFnZRIWCgZpbWFnZXMYBCADKAlSBmltYWdlcw==');
+final $typed_data.Uint8List productDescriptor = $convert.base64Decode('CgdQcm9kdWN0Eg4KAmlkGAEgASgFUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiwKEm1haW5fcHJvZHVjdF9pbWFnZRgDIAEoCVIQbWFpblByb2R1Y3RJbWFnZRIWCgZpbWFnZXMYBCADKAlSBmltYWdlcxIUCgVwcmljZRgFIAEoAVIFcHJpY2USGgoIZGlzY291bnQYBiABKAFSCGRpc2NvdW50EiAKC2Rlc2NyaXB0aW9uGAcgASgJUgtkZXNjcmlwdGlvbg==');
 @$core.Deprecated('Use productsDescriptor instead')
 const Products$json = const {
   '1': 'Products',

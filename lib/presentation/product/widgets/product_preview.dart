@@ -21,6 +21,7 @@ class ProductPreview extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AspectRatio(
                   aspectRatio: 1,
@@ -32,10 +33,42 @@ class ProductPreview extends StatelessWidget {
                           child:
                               const Icon(Icons.image_not_supported_outlined)),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 Text(
                   product.name,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        '\$${product.price}',
+                        style: product.discount != 0
+                            ? Theme.of(context).textTheme.bodySmall!.copyWith(
+                                  decoration: TextDecoration.lineThrough,
+                                )
+                            : Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: Colors.pink),
+                      ),
+                      if (product.discount != 0)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 4.0),
+                          child: Text(
+                            ' \$${product.price - product.discount}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: Colors.pink),
+                          ),
+                        ),
+                    ],
+                  ),
+                )
               ],
             ),
             Row(

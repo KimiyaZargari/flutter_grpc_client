@@ -34,7 +34,7 @@ class CreateProductNotifier extends StateNotifier<CreateProductState> {
   final IProductRepository productRepository;
   final ICoreRepository coreRepository;
   final formKey = GlobalKey<FormState>();
-  late String productName;
+  Product product = Product();
   XFile? image;
 
   CreateProductNotifier(
@@ -47,16 +47,15 @@ class CreateProductNotifier extends StateNotifier<CreateProductState> {
     if (image != null) {
       UploadImage uploadImage = UploadImage(coreRepository);
       imageLink = await uploadImage(image!);
+      product.mainProductImage = imageLink.imageLink;
     }
     CreateProduct createProduct = CreateProduct(productRepository);
-    await createProduct(
-        Product(name: productName, mainProductImage: imageLink?.imageLink));
+    await createProduct(product);
     state = ProductCreated();
   }
 
   setImage() async {
     final ImagePicker picker = ImagePicker();
-    // Pick an image
     image = await picker.pickImage(source: ImageSource.gallery);
     state = CreateProductInitial();
   }

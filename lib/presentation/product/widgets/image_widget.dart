@@ -15,22 +15,23 @@ class ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: setImage,
-      child: Container(
-        height: MediaQuery.of(context).size.width / 2,
-        width: MediaQuery.of(context).size.width / 2,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            image: image == null
-                ? null
-                : DecorationImage(
-                    image: FileImage(
-                      File(
-                        image!.path,
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              image: image == null
+                  ? null
+                  : DecorationImage(
+                      image: FileImage(
+                        File(
+                          image!.path,
+                        ),
                       ),
-                    ),
-                    fit: BoxFit.cover),
-            borderRadius: const BorderRadius.all(Radius.circular(8))),
-        child: image != null ? null : const Icon(Icons.image),
+                      fit: BoxFit.cover),
+              borderRadius: const BorderRadius.all(Radius.circular(8))),
+          child: image != null ? null : const Icon(Icons.image),
+        ),
       ),
     );
   }
