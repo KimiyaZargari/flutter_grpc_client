@@ -101,17 +101,17 @@ class AppImage extends $pb.GeneratedMessage {
 
 class ImageLink extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ImageLink', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imageLink')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'link')
     ..hasRequiredFields = false
   ;
 
   ImageLink._() : super();
   factory ImageLink({
-    $core.String? imageLink,
+    $core.String? link,
   }) {
     final _result = create();
-    if (imageLink != null) {
-      _result.imageLink = imageLink;
+    if (link != null) {
+      _result.link = link;
     }
     return _result;
   }
@@ -137,23 +137,23 @@ class ImageLink extends $pb.GeneratedMessage {
   static ImageLink? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get imageLink => $_getSZ(0);
+  $core.String get link => $_getSZ(0);
   @$pb.TagNumber(1)
-  set imageLink($core.String v) { $_setString(0, v); }
+  set link($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasImageLink() => $_has(0);
+  $core.bool hasLink() => $_has(0);
   @$pb.TagNumber(1)
-  void clearImageLink() => clearField(1);
+  void clearLink() => clearField(1);
 }
 
-class ID extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ID', createEmptyInstance: create)
+class Id extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Id', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
-  ID._() : super();
-  factory ID({
+  Id._() : super();
+  factory Id({
     $core.int? id,
   }) {
     final _result = create();
@@ -162,26 +162,26 @@ class ID extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Id.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Id.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ID clone() => ID()..mergeFromMessage(this);
+  Id clone() => Id()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ID copyWith(void Function(ID) updates) => super.copyWith((message) => updates(message as ID)) as ID; // ignore: deprecated_member_use
+  Id copyWith(void Function(Id) updates) => super.copyWith((message) => updates(message as Id)) as Id; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ID create() => ID._();
-  ID createEmptyInstance() => create();
-  static $pb.PbList<ID> createRepeated() => $pb.PbList<ID>();
+  static Id create() => Id._();
+  Id createEmptyInstance() => create();
+  static $pb.PbList<Id> createRepeated() => $pb.PbList<Id>();
   @$core.pragma('dart2js:noInline')
-  static ID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ID>(create);
-  static ID? _defaultInstance;
+  static Id getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Id>(create);
+  static Id? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get id => $_getIZ(0);
@@ -197,11 +197,10 @@ class Product extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Product', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mainProductImage')
-    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'images')
-    ..a<$core.double>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OD)
-    ..a<$core.double>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discount', $pb.PbFieldType.OD)
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'image')
+    ..a<$core.double>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OD)
+    ..a<$core.double>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discount', $pb.PbFieldType.OD)
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..hasRequiredFields = false
   ;
 
@@ -209,8 +208,7 @@ class Product extends $pb.GeneratedMessage {
   factory Product({
     $core.int? id,
     $core.String? name,
-    $core.String? mainProductImage,
-    $core.Iterable<$core.String>? images,
+    $core.String? image,
     $core.double? price,
     $core.double? discount,
     $core.String? description,
@@ -222,11 +220,8 @@ class Product extends $pb.GeneratedMessage {
     if (name != null) {
       _result.name = name;
     }
-    if (mainProductImage != null) {
-      _result.mainProductImage = mainProductImage;
-    }
-    if (images != null) {
-      _result.images.addAll(images);
+    if (image != null) {
+      _result.image = image;
     }
     if (price != null) {
       _result.price = price;
@@ -279,43 +274,40 @@ class Product extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get mainProductImage => $_getSZ(2);
+  $core.String get image => $_getSZ(2);
   @$pb.TagNumber(3)
-  set mainProductImage($core.String v) { $_setString(2, v); }
+  set image($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasMainProductImage() => $_has(2);
+  $core.bool hasImage() => $_has(2);
   @$pb.TagNumber(3)
-  void clearMainProductImage() => clearField(3);
+  void clearImage() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<$core.String> get images => $_getList(3);
+  $core.double get price => $_getN(3);
+  @$pb.TagNumber(4)
+  set price($core.double v) { $_setDouble(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPrice() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPrice() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.double get price => $_getN(4);
+  $core.double get discount => $_getN(4);
   @$pb.TagNumber(5)
-  set price($core.double v) { $_setDouble(4, v); }
+  set discount($core.double v) { $_setDouble(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasPrice() => $_has(4);
+  $core.bool hasDiscount() => $_has(4);
   @$pb.TagNumber(5)
-  void clearPrice() => clearField(5);
+  void clearDiscount() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.double get discount => $_getN(5);
+  $core.String get description => $_getSZ(5);
   @$pb.TagNumber(6)
-  set discount($core.double v) { $_setDouble(5, v); }
+  set description($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasDiscount() => $_has(5);
+  $core.bool hasDescription() => $_has(5);
   @$pb.TagNumber(6)
-  void clearDiscount() => clearField(6);
-
-  @$pb.TagNumber(7)
-  $core.String get description => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set description($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasDescription() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearDescription() => clearField(7);
+  void clearDescription() => clearField(6);
 }
 
 class Products extends $pb.GeneratedMessage {

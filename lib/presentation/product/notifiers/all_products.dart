@@ -35,6 +35,4 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
     var products = await fetchProducts(Empty());
     state = ProductsLoaded(products);
   }
-
-  deleteProduct(int id) async {}
 }

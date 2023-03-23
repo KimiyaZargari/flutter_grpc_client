@@ -18,13 +18,17 @@ class AppNetworkImage extends ConsumerWidget {
     final state = ref.watch(imageProvider(link));
     final notifier = ref.watch(imageProvider(link).notifier);
     if (state is ImageLoading) notifier.loadImage();
-    return state is ImageLoaded
-        ? Image.memory(
-            Uint8List.fromList(state.image.image),
-            fit: BoxFit.cover,
-            height: width,
-            width: height,
-          )
-        : const LoadingIndicator();
+    return link.link.isEmpty
+        ? Container(
+            color: Colors.grey[200],
+            child: const Icon(Icons.image_not_supported_outlined))
+        : state is ImageLoaded
+            ? Image.memory(
+                Uint8List.fromList(state.image.image),
+                fit: BoxFit.cover,
+                height: width,
+                width: height,
+              )
+            : const LoadingIndicator();
   }
 }

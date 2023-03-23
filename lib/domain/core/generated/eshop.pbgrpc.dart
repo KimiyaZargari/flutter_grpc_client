@@ -22,17 +22,13 @@ class EshopServiceClient extends $grpc.Client {
       '/EshopService/GetAllProducts',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Products.fromBuffer(value));
-  static final _$getProduct = $grpc.ClientMethod<$0.ID, $0.Product>(
-      '/EshopService/GetProduct',
-      ($0.ID value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Product.fromBuffer(value));
   static final _$editProduct = $grpc.ClientMethod<$0.Product, $0.Product>(
       '/EshopService/EditProduct',
       ($0.Product value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Product.fromBuffer(value));
-  static final _$deleteProduct = $grpc.ClientMethod<$0.ID, $0.Empty>(
+  static final _$deleteProduct = $grpc.ClientMethod<$0.Id, $0.Empty>(
       '/EshopService/DeleteProduct',
-      ($0.ID value) => value.writeToBuffer(),
+      ($0.Id value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$uploadImage = $grpc.ClientMethod<$0.AppImage, $0.ImageLink>(
       '/EshopService/UploadImage',
@@ -58,17 +54,12 @@ class EshopServiceClient extends $grpc.Client {
     return $createUnaryCall(_$getAllProducts, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Product> getProduct($0.ID request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getProduct, request, options: options);
-  }
-
   $grpc.ResponseFuture<$0.Product> editProduct($0.Product request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$editProduct, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> deleteProduct($0.ID request,
+  $grpc.ResponseFuture<$0.Empty> deleteProduct($0.Id request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteProduct, request, options: options);
   }
@@ -106,13 +97,6 @@ abstract class EshopServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($0.Products value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ID, $0.Product>(
-        'GetProduct',
-        getProduct_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.ID.fromBuffer(value),
-        ($0.Product value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Product, $0.Product>(
         'EditProduct',
         editProduct_Pre,
@@ -120,12 +104,12 @@ abstract class EshopServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Product.fromBuffer(value),
         ($0.Product value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ID, $0.Empty>(
+    $addMethod($grpc.ServiceMethod<$0.Id, $0.Empty>(
         'DeleteProduct',
         deleteProduct_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.ID.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.Id.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.AppImage, $0.ImageLink>(
         'UploadImage',
@@ -153,18 +137,13 @@ abstract class EshopServiceBase extends $grpc.Service {
     return getAllProducts(call, await request);
   }
 
-  $async.Future<$0.Product> getProduct_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.ID> request) async {
-    return getProduct(call, await request);
-  }
-
   $async.Future<$0.Product> editProduct_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Product> request) async {
     return editProduct(call, await request);
   }
 
   $async.Future<$0.Empty> deleteProduct_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.ID> request) async {
+      $grpc.ServiceCall call, $async.Future<$0.Id> request) async {
     return deleteProduct(call, await request);
   }
 
@@ -177,10 +156,9 @@ abstract class EshopServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Product request);
   $async.Future<$0.Products> getAllProducts(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.Product> getProduct($grpc.ServiceCall call, $0.ID request);
   $async.Future<$0.Product> editProduct(
       $grpc.ServiceCall call, $0.Product request);
-  $async.Future<$0.Empty> deleteProduct($grpc.ServiceCall call, $0.ID request);
+  $async.Future<$0.Empty> deleteProduct($grpc.ServiceCall call, $0.Id request);
   $async.Future<$0.ImageLink> uploadImage(
       $grpc.ServiceCall call, $async.Stream<$0.AppImage> request);
   $async.Stream<$0.AppImage> loadImage(

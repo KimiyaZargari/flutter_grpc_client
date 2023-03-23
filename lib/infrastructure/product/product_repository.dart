@@ -19,7 +19,7 @@ class ProductRepository extends IProductRepository {
   }
 
   @override
-  Future<Empty> deleteProduct(ID id) async {
+  Future<Empty> deleteProduct(Id id) async {
     return await client.stub.deleteProduct(id);
   }
 

@@ -5,11 +5,9 @@ service EshopService {
 
     rpc GetAllProducts (Empty) returns (Products);
 
-    rpc GetProduct (ID) returns (Product);
-
     rpc EditProduct (Product) returns (Product);
 
-    rpc DeleteProduct (ID) returns (Empty);
+    rpc DeleteProduct (Id) returns (Empty);
 
     rpc UploadImage (stream AppImage) returns (ImageLink);
     rpc LoadImage (ImageLink) returns (stream AppImage);
@@ -24,21 +22,20 @@ message AppImage {
     string name = 2;
 }
 message ImageLink {
-    string image_link = 1;
+    string link = 1;
 }
 
-message ID {
+message Id {
     int32 id = 1;
 }
 
 message Product {
     int32 id = 1;
     string name = 2;
-    string main_product_image = 3;
-    repeated string images = 4;
-    double price = 5;
-    double discount = 6;
-    string description = 7;
+    string image = 3;
+    double price = 4;
+    double discount = 5;
+    string description = 6;
 }
 message Products {
     repeated Product products = 1;

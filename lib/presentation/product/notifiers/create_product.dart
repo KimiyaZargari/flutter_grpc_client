@@ -47,7 +47,7 @@ class CreateProductNotifier extends StateNotifier<CreateProductState> {
     if (image != null) {
       UploadImage uploadImage = UploadImage(coreRepository);
       imageLink = await uploadImage(image!);
-      product.mainProductImage = imageLink.imageLink;
+      product.image = imageLink.link;
     }
     CreateProduct createProduct = CreateProduct(productRepository);
     await createProduct(product);

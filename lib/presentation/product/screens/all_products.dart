@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grpc_client/presentation/core/widgets/loading_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../notifiers/products_notifier.dart';
+import '../notifiers/all_products.dart';
 import '../widgets/product_preview.dart';
-import 'create_product_page.dart';
+import 'create_product.dart';
 
 class ProductsPage extends ConsumerWidget {
   const ProductsPage({Key? key}) : super(key: key);
@@ -29,17 +29,13 @@ class ProductsPage extends ConsumerWidget {
       ),
       body: state is ProductsLoaded
           ? GridView.count(
-        childAspectRatio: 0.62,
+              childAspectRatio: 0.7,
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
               children: state.products.products
-                  .map((product) => ProductPreview(
-                    product,
-                    onDelete: () => notifier.deleteProduct(product.id),
-                    onEdit: () => () {},
-                  ))
+                  .map((product) => ProductPreview(product))
                   .toList(),
             )
           : const LoadingIndicator(),

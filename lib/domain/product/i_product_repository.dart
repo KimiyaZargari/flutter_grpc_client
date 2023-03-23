@@ -5,5 +5,5 @@ abstract class IProductRepository {
 
   Future<Product> createProduct(Product product);
 
-  Future<Empty> deleteProduct(ID id);
+  Future<Empty> deleteProduct(Id id);
 }

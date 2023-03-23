@@ -10,6 +10,6 @@ class DeleteProduct implements UseCase<int, Empty> {
 
   @override
   Future<Empty> call(id) async {
-    return await repository.deleteProduct(ID(id: id));
+    return await repository.deleteProduct(Id(id: id));
   }
 }
